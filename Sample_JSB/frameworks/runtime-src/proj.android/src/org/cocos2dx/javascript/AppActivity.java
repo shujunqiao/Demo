@@ -29,6 +29,9 @@ package org.cocos2dx.javascript;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+import android.content.Intent;
+
+import com.anysdk.framework.PluginWrapper;
 public class AppActivity extends Cocos2dxActivity {
 	
     @Override
@@ -36,7 +39,27 @@ public class AppActivity extends Cocos2dxActivity {
         Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
         // TestCpp should create stencil buffer
         glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
-
+        PluginWrapper.init(this); // for plugins
         return glSurfaceView;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    	super.onActivityResult(requestCode, resultCode, data);
+    	PluginWrapper.onActivityResult(requestCode, resultCode, data);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PluginWrapper.onResume();
+    }
+    @Override
+    public void onPause(){
+        PluginWrapper.onPause();
+        super.onPause();
+    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        PluginWrapper.onNewIntent(intent);
+        super.onNewIntent(intent);
     }
 }

@@ -17,7 +17,10 @@
 #include "jsb_opengl_registration.h"
 #include "network/XMLHTTPRequest.h"
 #include "network/jsb_websocket.h"
-#include "network/jsb_socketio.h"
+#include "network/jsb_socketio.h" 
+
+#include "autoanysdkbindings.hpp"
+#include "manualanysdkbindings.hpp"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/CCJavascriptJavaBridge.h"
@@ -80,6 +83,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
 	sc->addRegisterCallback(register_jsb_socketio);
+
+    sc->addRegisterCallback(register_all_autoanysdkbindings);
+    sc->addRegisterCallback(register_all_anysdk_manual);
+
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     sc->addRegisterCallback(JavascriptJavaBridge::_js_register);
