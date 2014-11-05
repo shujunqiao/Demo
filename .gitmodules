@@ -3,4 +3,4 @@
 	url = git://github.com/cocos2d/cocos2d-x.git
 [submodule "Sample_JSB/frameworks/js-bindings/cocos2d-x"]
 	path = Sample_JSB/frameworks/js-bindings/cocos2d-x
-	url = /workspace/git/cocos2d-x/.git
+	url = git://github.com/cocos2d/cocos2d-x.git
